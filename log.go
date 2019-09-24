@@ -8,6 +8,11 @@ import (
 	"os"
 )
 
+/*
+ 	默认设置：
+	0 - 2层信息输出到os.stdout
+    3 - 6层信息输出到os.stderr
+*/
 var logMap = map[logType]*log.Logger{
 	Leveltrace: log.New(os.Stdout, "", 0),
 	Levelinfo:  log.New(os.Stdout, "", 0),
@@ -17,12 +22,16 @@ var logMap = map[logType]*log.Logger{
 	Levelpanic: log.New(os.Stderr, "", 0),
 	Levelfatal: log.New(os.Stderr, "", 0),
 }
+
 var isColor = false
 
-/*
-	隐藏单个日志级别的输出
-	日志级别不能超过Levelpanic
-*/
+//是否彩色打印
+func IsColor(iscolor bool) {
+	isColor = iscolor
+}
+
+//隐藏单个日志级别的输出信息
+//日志级别不能超过Levelpanic
 func SetLogDiscard(t logType) error {
 	if t > Levelpanic {
 		return errors.New("SetLevel err: can't set log level Discard > Levelerror")
@@ -31,10 +40,8 @@ func SetLogDiscard(t logType) error {
 	return nil
 }
 
-/*
-	设置隐藏日志等级
-	最高设置到Levelpanic 即是低于panic等级的日志都不显示
-*/
+//隐藏日志输出信息
+//最高设置到Levelpanic 即是低于panic等级的日志都不显示
 func SetLogDiscardLevel(t logType) error {
 	if t > Levelpanic {
 		return errors.New("SetLevel err: can't set log level Discard more than Levelerror")
@@ -52,16 +59,12 @@ func SetLogDiscardLevel(t logType) error {
 	return nil
 }
 
-func IsColor(iscolor bool) {
-	isColor = iscolor
-}
-
 //设置单个日志级别输出到目标位置
 func SetOutput(t logType, w io.Writer) {
 	logMap[t].SetOutput(w)
 }
 
-//设置全部日志级别输出到目的地
+//设置全部日志级别输出到目标位置
 func SetOutputAll(w io.Writer) {
 	for _, v := range logMap {
 		v.SetOutput(w)

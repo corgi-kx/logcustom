@@ -10,6 +10,7 @@ import (
 
 type colorType uint8
 
+//传入要打印的信息，拼接好后返回
 func joint(prefix, message string, color colorType) string {
 	now := time.Now().Format("2006/01/02 15:04:05")
 	filename, funcname, line := getpProcInfo()
@@ -30,6 +31,7 @@ func (l mylog) joint(prefix, message string, color colorType) string {
 	return s
 }
 
+//获取打印日志的进程信息
 func getpProcInfo() (filename, funcname string, line int) {
 	pc, filename, line, ok := runtime.Caller(3)
 	if ok {
