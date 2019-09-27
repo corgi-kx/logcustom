@@ -13,7 +13,7 @@ import (
 	0 - 2层信息输出到os.stdout
     3 - 6层信息输出到os.stderr
 */
-var logMap = map[logType]*log.Logger{
+var logMap = []*log.Logger{
 	Leveltrace: log.New(os.Stdout, "", 0),
 	Levelinfo:  log.New(os.Stdout, "", 0),
 	Leveldebug: log.New(os.Stdout, "", 0),
@@ -23,9 +23,7 @@ var logMap = map[logType]*log.Logger{
 	Levelfatal: log.New(os.Stderr, "", 0),
 }
 
-var isColor = false
-
-//是否彩色打印
+//是否彩色打印(不支持windows)
 func IsColor(iscolor bool) {
 	isColor = iscolor
 }

@@ -75,27 +75,27 @@ func Errorf(format string, v ...interface{}) {
 func Panic(v ...interface{}) {
 	p := logMap[Levelpanic]
 	s := fmt.Sprint(v...)
-	message := joint(lPanic, s, colorMagenta)
+	message := joint(lPanic, s, colorRed)
 	p.Panicln(message)
 }
 
 func Panicf(format string, v ...interface{}) {
 	p := logMap[Levelpanic]
 	s := fmt.Sprintf(format, v...)
-	message := joint(lPanic, s, colorMagenta)
+	message := joint(lPanic, s, colorRed)
 	p.Panicln(message)
 }
 
 func Fatal(v ...interface{}) {
 	falat := logMap[Levelfatal]
 	s := fmt.Sprint(v...)
-	message := joint(lFatal, s, colorMagenta)
+	message := joint(lFatal, s, colorPurple)
 	falat.Fatalln(message)
 }
 
 func Fatalf(format string, v ...interface{}) {
 	falat := logMap[Levelfatal]
 	s := fmt.Sprintf(format, v...)
-	message := joint(lFatal, s, colorMagenta)
+	message := joint(lFatal, s, colorPurple)
 	falat.Fatalln(message)
 }
