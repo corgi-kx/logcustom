@@ -21,9 +21,9 @@
 
 打印效果：
 
-[![Example Output](example\images\display.png)
+[![Example Output](example/images/display.png)](example/example.go)
 
-[使用示范](examples/example.go)：
+[使用示范](example/example.go)：
 ```go
 package main
 
