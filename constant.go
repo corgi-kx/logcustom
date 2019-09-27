@@ -1,7 +1,11 @@
 package log
 
+import "runtime"
+
+var systemType = runtime.GOOS
+
 //默认是否彩色打印
-var isColor = false
+var isColor = true
 
 type logType int
 
@@ -28,6 +32,16 @@ const (
 	colorBlue
 	colorPurple  //紫色
 	colorDarkblue //碧蓝
+)
+
+//日志打印颜色
+const (
+	WinColorBlue colorType = iota + 9
+	WinColorGreen
+	WinColorDarkblue //碧蓝
+	WinColorRed
+	WinColorPurple  //紫色
+	WinColorYellow
 )
 
 //日志头部标志

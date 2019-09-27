@@ -1,30 +1,3 @@
-<br>
-
-花了几天时间写了个golang日志小工具，基本满足日常开发需求
-
-**特点**
- - 支持定向输出日志到指定文件
- - 支持一键隐藏调试信息
- - 支持彩色打印（windows/linux/mac均支持）
- - 显示输出日志的类名、函数/方法名
- 
- <br>
- 
-**源码地址：**
-[https://github.com/mikesen1994/logcustom](https://github.com/mikesen1994/logcustom)
-
-<br>
-
-
-### 示例 Example
-<hr>
-
-打印效果：
-
-[![Example Output](example\images\display.png)
-
-[使用示范](examples/example.go)：
-```go
 package main
 
 import (
@@ -64,27 +37,11 @@ func main() {
 	mylog.Error("SetOutputAll test  !")
 }
 
-```
-<br><br>
-
-### 安装 Installing
-<hr>
-
-```shell
-  go get github.com/mikesen1994/logcustom
-```
-安装成功后，日志包就可以使用了，包位置在
-```shell
-  $GOPATH/src/pkg/github.com/mikesen1994/logcustom
-```
-
-你可以使用 `go get -u` 对此包进行更新
-<br><br>
-
-### 文档 Documentation
-<hr>
-
-你可以使用以下命令来查看使用文档
-```shell
- godoc github.com/mikesen1994/logcustom
-```
+//func DisplayEffect () {
+//	log.Info("Write something you want to print !")
+//	log.Warn("Write something you want to print !")
+//	log.Trace("Write something you want to print !")
+//	log.Debug("Write something you want to print !")
+//	log.Error("Write something you want to print !")
+//	log.Fatal("Write something you want to print !")
+//}

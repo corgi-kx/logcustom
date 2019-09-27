@@ -19,7 +19,7 @@ type mylog struct {
     3 - 6层信息输出到os.stderr
 */
 func New() mylog {
-	loggerMap := []*log.Logger{
+	loggers := []*log.Logger{
 		Leveltrace: log.New(os.Stdout, "", 0),
 		Levelinfo:  log.New(os.Stdout, "", 0),
 		Leveldebug: log.New(os.Stdout, "", 0),
@@ -28,7 +28,7 @@ func New() mylog {
 		Levelpanic: log.New(os.Stderr, "", 0),
 		Levelfatal: log.New(os.Stderr, "", 0),
 	}
-	return mylog{loggerMap, false}
+	return mylog{loggers, true}
 }
 
 /*
@@ -70,7 +70,7 @@ func (l *mylog) IsColor(iscolor bool) {
 }
 
 //设置单个日志级别输出到目标位置
-func (l mylog) SetOutput(t logType, w io.Writer) {
+func (l mylog) SetOutput(w io.Writer,t logType) {
 	l.loggers[t].SetOutput(w)
 }
 
@@ -82,14 +82,14 @@ func (l mylog) SetOutputAll(w io.Writer) {
 }
 
 //设置指定日志级别及以上的输出到目标位置
-func (l mylog) SetOutputAbove(t logType, w io.Writer) {
+func (l mylog) SetOutputAbove(w io.Writer,t logType) {
 	for i := int(t); i < 7; i++ {
 		l.loggers[logType(i)].SetOutput(w)
 	}
 }
 
 //设置指定日志级别及以下的输出到目标位置
-func (l mylog) SetOutputBelow(t logType, w io.Writer) {
+func (l mylog) SetOutputBelow(w io.Writer,t logType) {
 	for i := 0; i <= int(t); i++ {
 		l.loggers[logType(i)].SetOutput(w)
 	}

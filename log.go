@@ -13,7 +13,7 @@ import (
 	0 - 2层信息输出到os.stdout
     3 - 6层信息输出到os.stderr
 */
-var logMap = []*log.Logger{
+var loggers = []*log.Logger{
 	Leveltrace: log.New(os.Stdout, "", 0),
 	Levelinfo:  log.New(os.Stdout, "", 0),
 	Leveldebug: log.New(os.Stdout, "", 0),
@@ -34,7 +34,7 @@ func SetLogDiscard(t logType) error {
 	if t > Levelpanic {
 		return errors.New("SetLevel err: can't set log level Discard > Levelerror")
 	}
-	logMap[t].SetOutput(ioutil.Discard)
+	loggers[t].SetOutput(ioutil.Discard)
 	return nil
 }
 
@@ -46,39 +46,39 @@ func SetLogDiscardLevel(t logType) error {
 	}
 	for i := int(t); i >= 0; i-- {
 		if i <= 3 {
-			logMap[logType(i)].SetOutput(os.Stdout)
+			loggers[logType(i)].SetOutput(os.Stdout)
 		} else {
-			logMap[logType(i)].SetOutput(os.Stderr)
+			loggers[logType(i)].SetOutput(os.Stderr)
 		}
 	}
 	for i := 0; i < int(t); i++ {
-		logMap[logType(i)].SetOutput(ioutil.Discard)
+		loggers[logType(i)].SetOutput(ioutil.Discard)
 	}
 	return nil
 }
 
 //设置单个日志级别输出到目标位置
-func SetOutput(t logType, w io.Writer) {
-	logMap[t].SetOutput(w)
+func SetOutput(w io.Writer,t logType) {
+	loggers[t].SetOutput(w)
 }
 
 //设置全部日志级别输出到目标位置
 func SetOutputAll(w io.Writer) {
-	for _, v := range logMap {
+	for _, v := range loggers {
 		v.SetOutput(w)
 	}
 }
 
 //设置指定日志级别及以上的输出到目标位置
-func SetOutputAbove(t logType, w io.Writer) {
+func SetOutputAbove(w io.Writer,t logType) {
 	for i := int(t); i < 7; i++ {
-		logMap[logType(i)].SetOutput(w)
+		loggers[logType(i)].SetOutput(w)
 	}
 }
 
 //设置指定日志级别及以下的输出到目标位置
-func SetOutputBelow(t logType, w io.Writer) {
+func SetOutputBelow(w io.Writer,t logType) {
 	for i := 0; i <= int(t); i++ {
-		logMap[logType(i)].SetOutput(w)
+		loggers[logType(i)].SetOutput(w)
 	}
 }
