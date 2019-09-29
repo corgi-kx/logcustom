@@ -1,3 +1,6 @@
+# golang日志小工具
+
+[![](https://travis-ci.org/corgi-kx/logcustom.svg?branch=master)](https://travis-ci.org/corgi-kx)
 <br>
 
 花了几天时间写了个golang日志小工具，基本满足日常开发需求
