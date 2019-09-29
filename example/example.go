@@ -1,7 +1,7 @@
 package main
 
 import (
-	log "github.com/mikesen1994/logcustom"
+	log "github.com/corgi-kx/logcustom"
 	"os"
 )
 
