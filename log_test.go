@@ -69,8 +69,8 @@ func TestLogMultithread(t *testing.T) {
 	t.Log("测试日志是否线程安全")
 	{
 		wait := sync.WaitGroup{}
-		wait.Add(20000)
-		for i := 0; i < 10000; i++ {
+		wait.Add(200)
+		for i := 0; i < 100; i++ {
 			go func(i int) {
 				for j := 0; j <= 10; j++ {
 					Tracef("1试试可以正常打印吗！这是第%d次 第%d次！", i, j)
@@ -78,7 +78,7 @@ func TestLogMultithread(t *testing.T) {
 				wait.Done()
 			}(i)
 		}
-		for i := 0; i < 10000; i++ {
+		for i := 0; i < 100; i++ {
 			go func(i int) {
 				for j := 0; j <= 10; j++ {
 					Tracef("2试试可以正常打印吗！这是第%d次 第%d次！", i, j)
@@ -152,36 +152,3 @@ func TestColorCode(t *testing.T) {
 	}
 }
 
-
-
-func ExamplePrint() {
-	Info("Write something you want to print !")
-	Warn("Write something you want to print !")
-	Trace("Write something you want to print !")
-	Debug("Write something you want to print !")
-	Error("Write something you want to print !")
-
-	//设置输出信息隐藏等级
-	err := SetLogDiscardLevel(Leveldebug)
-	if err != nil {
-		Error(err)
-	}
-
-	Info("SetLogDiscardLevel test  !") //INFO不会被打印
-	Debug("SetLogDiscardLevel test  !")
-	Warn("SetLogDiscardLevel test  !")
-
-	//创建新的日志对象
-	mylog := New()
-	file, err := os.OpenFile("log.txt", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0666)
-	if err != nil {
-		Error(err)
-	}
-	//将日志信息输出到指定文件
-	mylog.SetOutputAbove(file, Levelwarn) //WARN及WARN以上级别的日志会输出到指定文件
-	mylog.Trace("SetOutputAll test !")
-	mylog.Info("SetOutputAll test  !")
-	mylog.Debug("SetOutputAll test  !")
-	mylog.Warn("SetOutputAll test  !")
-	mylog.Error("SetOutputAll test  !")
-}
