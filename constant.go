@@ -1,8 +1,5 @@
 package log
 
-import "runtime"
-
-var systemType = runtime.GOOS
 
 //默认是否彩色打印
 var isColor = true

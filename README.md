@@ -71,11 +71,11 @@ func main() {
 <hr>
 
 ```shell
-  go get github.com/mikesen1994/logcustom
+go get github.com/mikesen1994/logcustom
 ```
 安装成功后，日志包就可以使用了，包位置在
 ```shell
-  $GOPATH/src/pkg/github.com/mikesen1994/logcustom
+$GOPATH/src/github.com/mikesen1994/logcustom
 ```
 
 你可以使用 `go get -u` 对此包进行更新
