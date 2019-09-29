@@ -11,7 +11,7 @@
  <br>
  
 **源码地址：**
-[https://github.com/mikesen1994/logcustom](https://github.com/mikesen1994/logcustom)
+[https://github.com/corgi-kx/logcustom](https://github.com/corgi-kx/logcustom)
 
 <br>
 
@@ -28,7 +28,7 @@
 package main
 
 import (
-	log "github.com/mikesen1994/logcustom"
+	log "github.com/corgi-kx/logcustom"
 	"os"
 )
 
@@ -87,4 +87,12 @@ $GOPATH/src/github.com/corgi-kx/logcustom
 你可以使用以下命令来查看使用文档
 ```shell
  godoc github.com/corgi-kx/logcustom
+```
+或者在终端输入如下命令：
+```shell
+godoc -http=:6060
+```
+在浏览器访问此界面
+```shell
+http://127.0.0.1:6060/pkg/github.com/corgi-kx/logcustom/
 ```

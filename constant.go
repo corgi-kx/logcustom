@@ -1,6 +1,5 @@
 package log
 
-
 //默认是否彩色打印
 var isColor = true
 
@@ -19,26 +18,25 @@ const (
 
 type colorType uint8
 
-
 //日志打印颜色
 const (
-	colorBlack colorType = iota + 30
-	colorRed
-	colorGreen
-	colorYellow
-	colorBlue
-	colorPurple  //紫色
-	colorDarkblue //碧蓝
+	colorBlack    colorType = iota + 30
+	colorRed                //红色
+	colorGreen              //绿色
+	colorYellow             //黄色
+	colorBlue               //蓝色
+	colorPurple             //紫色
+	colorDarkblue           //碧蓝
 )
 
 //日志打印颜色
 const (
-	WinColorBlue colorType = iota + 9
-	WinColorGreen
-	WinColorDarkblue //碧蓝
-	WinColorRed
-	WinColorPurple  //紫色
-	WinColorYellow
+	WinColorBlue     colorType = iota + 9 //蓝色
+	WinColorGreen                         //绿色
+	WinColorDarkblue                      //碧蓝
+	WinColorRed                           //红色
+	WinColorPurple                        //紫色
+	WinColorYellow                        //黄色
 )
 
 //日志头部标志

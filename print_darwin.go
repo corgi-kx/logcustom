@@ -2,6 +2,7 @@ package log
 
 import "fmt"
 
+//Trace级别的打印信息，输入要打印的内容，会自动换行
 func Trace(v ...interface{}) {
 	trace := loggers[Leveltrace]
 	s := fmt.Sprint(v...)
@@ -9,55 +10,56 @@ func Trace(v ...interface{}) {
 	trace.Println(message)
 }
 
+//Trace级别的打印信息，第一个参数输入格式,第二个参数输入要打印的内容，类似fmt.Printf
 func Tracef(format string, v ...interface{}) {
 	trace := loggers[Leveltrace]
 	s := fmt.Sprintf(format, v...)
 	message := joint(lTrace, s, colorGreen)
 	trace.Println(message)
 }
-
+//Info级别的打印信息，输入要打印的内容，会自动换行
 func Info(v ...interface{}) {
 	info := loggers[Levelinfo]
 	s := fmt.Sprint(v...)
 	message := joint(lInfo, s, colorBlue)
 	info.Println(message)
 }
-
+//Infof级别的打印信息，第一个参数输入格式,第二个参数输入要打印的内容，类似fmt.Printf
 func Infof(format string, v ...interface{}) {
 	info := loggers[Levelinfo]
 	s := fmt.Sprintf(format, v...)
 	message := joint(lInfo, s, colorBlue)
 	info.Println(message)
 }
-
+//Debug级别的打印信息，输入要打印的内容，会自动换行
 func Debug(v ...interface{}) {
 	debug := loggers[Leveldebug]
 	s := fmt.Sprint(v...)
 	message := joint(lDebug, s, colorDarkblue)
 	debug.Println(message)
 }
-
+//Debug级别的打印信息，第一个参数输入格式,第二个参数输入要打印的内容，类似fmt.Printf
 func Debugf(format string, v ...interface{}) {
 	debug := loggers[Leveldebug]
 	s := fmt.Sprintf(format, v...)
 	message := joint(lDebug, s, colorDarkblue)
 	debug.Println(message)
 }
-
+//Warn级别的打印信息，输入要打印的内容，会自动换行
 func Warn(v ...interface{}) {
 	warn := loggers[Levelwarn]
 	s := fmt.Sprint(v...)
 	message := joint(lWarn, s, colorYellow)
 	warn.Println(message)
 }
-
+//Warn级别的打印信息，第一个参数输入格式,第二个参数输入要打印的内容，类似fmt.Printf
 func Warnf(format string, v ...interface{}) {
 	warn := loggers[Levelwarn]
 	s := fmt.Sprintf(format, v...)
 	message := joint(lWarn, s, colorYellow)
 	warn.Println(message)
 }
-
+//Error级别的打印信息，输入要打印的内容，会自动换行
 func Error(v ...interface{}) {
 	e := loggers[Levelerror]
 	s := fmt.Sprint(v...)
@@ -65,6 +67,7 @@ func Error(v ...interface{}) {
 	e.Println(message)
 }
 
+//Errorf级别的打印信息，第一个参数输入格式,第二个参数输入要打印的内容，类似fmt.Printf
 func Errorf(format string, v ...interface{}) {
 	e := loggers[Levelerror]
 	s := fmt.Sprintf(format, v...)
@@ -72,6 +75,8 @@ func Errorf(format string, v ...interface{}) {
 	e.Println(message)
 }
 
+//Panic级别的打印信息，输入要打印的内容，会自动换行
+// 执行Panic，递归执行每层的defer后中断程序
 func Panic(v ...interface{}) {
 	p := loggers[Levelpanic]
 	s := fmt.Sprint(v...)
@@ -79,6 +84,8 @@ func Panic(v ...interface{}) {
 	p.Panicln(message)
 }
 
+//Panicf级别的打印信息，第一个参数输入格式,第二个参数输入要打印的内容
+// 输出错误信息后，执行Panic()，递归执行每层的defer后中断程序
 func Panicf(format string, v ...interface{}) {
 	p := loggers[Levelpanic]
 	s := fmt.Sprintf(format, v...)
@@ -86,6 +93,8 @@ func Panicf(format string, v ...interface{}) {
 	p.Panicln(message)
 }
 
+//Fatal级别的打印信息，输入要打印的内容，会自动换行
+// 输出错误信息后，直接执行os.exit(1)中断程序
 func Fatal(v ...interface{}) {
 	falat := loggers[Levelfatal]
 	s := fmt.Sprint(v...)
@@ -93,6 +102,8 @@ func Fatal(v ...interface{}) {
 	falat.Fatalln(message)
 }
 
+//Fatal级别的打印信息，第一个参数输入格式,第二个参数输入要打印的内容
+// 输出错误信息后，直接执行os.exit(1)中断程序
 func Fatalf(format string, v ...interface{}) {
 	falat := loggers[Levelfatal]
 	s := fmt.Sprintf(format, v...)
