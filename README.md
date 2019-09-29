@@ -2,12 +2,20 @@
 
 花了几天时间写了个golang日志小工具，基本满足日常开发需求
 
-**特点**
- - 支持定向输出日志到指定文件
- - 支持一键隐藏调试信息
- - 支持彩色打印（windows/linux/mac均支持）
- - 显示输出日志的类名、函数/方法名
+**特点** 
+ - 支持定向输出日志到指定文件  
+ - 支持隐藏调试信息         
+ - 支持彩色打印（windows/linux/mac均支持） 
+ - 显示输出日志的类名、函数/方法名 
  
+ <br>
+ 
+ **Feature** 
+  - Supports directing output logs to specified files
+  - Support for hiding debugging information
+  - Support color printing (Windows/Linux/MAC)
+  - Displays the class name, function/method name of the output log
+  
  <br>
  
 **源码地址：**
@@ -33,6 +41,7 @@ import (
 )
 
 func main() {
+	//直接调用log，则是全局使用
 	log.Info("Write something you want to print !")
 	log.Warn("Write something you want to print !")
 	log.Trace("Write something you want to print !")
@@ -78,15 +87,15 @@ go get github.com/corgi-kx/logcustom
 $GOPATH/src/github.com/corgi-kx/logcustom
 ```
 
-你可以使用 `go get -u` 对此包进行更新
+您可以使用 `go get -u` 对此包进行更新
 <br><br>
 
 ### 文档 Documentation
 <hr>
 
-你可以使用以下命令来查看使用文档
+您可以使用以下命令来查看使用文档
 ```shell
- godoc github.com/corgi-kx/logcustom
+godoc github.com/corgi-kx/logcustom
 ```
 或者在终端输入如下命令：
 ```shell

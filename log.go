@@ -58,13 +58,13 @@ func SetLogDiscardLevel(t logType) error {
 }
 
 //SetOutput设置单个日志级别输出到目标位置
-//传入文件的句柄，或者实现了io.Writer的对象与日志级别，则该日志级别的日志将会输出到指定的文件或位置
+//传入文件的句柄（或者实现了io.Writer接口的对象）与日志级别，则该日志级别的日志将会输出到指定的文件或位置
 func SetOutput(w io.Writer, t logType) {
 	loggers[t].SetOutput(w)
 }
 
 //SetOutputAll设置全部日志级别输出到目标位置
-//传入文件的句柄，或者实现了io.Writer的对象与日志级别，则全部日志级别的日志将会输出到指定的文件或位置
+//传入文件的句柄（或者实现了io.Writer接口的对象）与日志级别，则全部日志级别的日志将会输出到指定的文件或位置
 func SetOutputAll(w io.Writer) {
 	for _, v := range loggers {
 		v.SetOutput(w)
@@ -72,7 +72,7 @@ func SetOutputAll(w io.Writer) {
 }
 
 //SetOutputAbove设置指定日志级别及以上的输出到目标位置
-//传入文件的句柄，或者实现了io.Writer的对象与日志级别，则该日志级别以上的日志（包括此日志级别）将会输出到指定的文件或位置
+//传入文件的句柄（或者实现了io.Writer接口的对象）与日志级别，则该日志级别以上的日志（包括此日志级别）将会输出到指定的文件或位置
 func SetOutputAbove(w io.Writer, t logType) {
 	for i := int(t); i < 7; i++ {
 		loggers[logType(i)].SetOutput(w)
@@ -80,7 +80,7 @@ func SetOutputAbove(w io.Writer, t logType) {
 }
 
 //SetOutputBelow设置指定日志级别及以下的输出到目标位置
-//传入文件的句柄，或者实现了io.Writer的对象与日志级别，则该日志级别以下的日志（包括此日志级别）将会输出到指定的文件或位置
+//传入文件的句柄（或者实现了io.Writer接口的对象）与日志级别，则该日志级别以下的日志（包括此日志级别）将会输出到指定的文件或位置
 func SetOutputBelow(w io.Writer, t logType) {
 	for i := 0; i <= int(t); i++ {
 		loggers[logType(i)].SetOutput(w)
