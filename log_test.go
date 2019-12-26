@@ -90,7 +90,6 @@ func TestLogMultithread(t *testing.T) {
 	}
 }
 
-
 func TestMapVSArray(t *testing.T) {
 	t.Log("测试字典与切片，使用哪个性能更好")
 	count := 1000000
@@ -142,13 +141,11 @@ func TestMapVSArray(t *testing.T) {
 	fmt.Println("array:", time.Since(st))
 }
 
-
 func TestColorCode(t *testing.T) {
 	t.Log("测试颜色代码")
 	{
-		for i:=30;i<=40;i++  {
-			fmt.Printf("\033[%sm%s\033[0m\n",strconv.Itoa(i),"some thins you want to print out.")
+		for i := 30; i <= 40; i++ {
+			fmt.Printf("\033[%sm%s\033[0m\n", strconv.Itoa(i), "some thins you want to print out.")
 		}
 	}
 }
-
